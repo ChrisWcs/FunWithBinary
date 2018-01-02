@@ -5,13 +5,14 @@ class App extends Component {
         super(props);
         this.state = {
             binaryNumber: [],
+            currentAnswer: -1,
         };
 
     }
 
 
     render(){
-
+        
     }
 }
 
