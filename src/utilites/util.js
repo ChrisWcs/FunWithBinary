@@ -7,3 +7,13 @@ export const valueOfBinary = (binaryNum) => {
     }
     return total;
 };
+
+export const randomBinaryNumber = (len) => {
+    let binaryNum = [];
+
+    for(let i = 0; i < len; i++){
+        binaryNum[i] = Math.floor(Math.random() * 2);
+    }
+
+    return binaryNum;
+};
