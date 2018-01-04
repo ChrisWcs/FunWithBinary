@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import FlexRow from '../styledcomps/FlexRow';
-
+import BinButton from '../styledcomps/BinButton';
 
 class Input extends Component {
 
@@ -34,7 +34,7 @@ class Input extends Component {
         return(
             <FlexRow>
                 <input type="text" value={value} onChange={this.handleOnChange}/>
-                <button onClick={this.handleSubmit}>Check Answer</button>
+                <BinButton onClick={this.handleSubmit} color={this.props.answer}>Check Answer</BinButton>
             </FlexRow>
         );
     }
