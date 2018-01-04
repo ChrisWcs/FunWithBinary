@@ -41,7 +41,8 @@ class Input extends Component {
 }
 
 Input.propTypes = {
-    parentSubmit: PropTypes.func
+    parentSubmit: PropTypes.func,
+    answer: PropTypes.bool
 };
 
 export default Input;

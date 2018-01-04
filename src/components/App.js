@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import reducer from '../reducers/reducer';
 
 import Input from './Input';
 import BinaryContainer from './BinaryContainer';
@@ -8,24 +9,26 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            binaryNumber: [ 1, 0, 1, 0 ],
-            currentAnswer: -1,
+            appState: {
+                binaryNumber: [ 1, 0, 1, 0 ],
+                currentAnswer: -1
+            }
         };
 
-        this.submit = this.submit.bind(this);
+        this.appDispatch = this.appDispatch.bind(this);
     }
 
-    submit(value){
-        this.setState( () => ({
-            currentAnswer: value,
+    appDispatch(action){
+        this.setState( prevState => ({
+            appState: reducer( prevState, action )
         }));
     }
 
     render(){
         return (
             <FlexCol>
-                <BinaryContainer number={this.state.binaryNumber}/>
-                <Input parentSubmit={this.submit} answer={true}/>
+                <BinaryContainer number={this.state.appState.binaryNumber}/>
+                <Input parentSubmit={this.appDispatch} answer={true}/>
             </FlexCol>
         );
     }
