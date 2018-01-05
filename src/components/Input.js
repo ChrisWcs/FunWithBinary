@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { createCheckAnswer, createNewRandom } from '../actions/actionCreators';
 import PropTypes from 'prop-types';
 import FlexRow from '../styledcomps/FlexRow';
 import BinButton from '../styledcomps/BinButton';
@@ -17,8 +18,8 @@ class Input extends Component {
     }
 
     handleOnChange(event){
+        let { value } = event.target;
         this.setState( () => {
-            let { value } = event.target;
             return {
                 value: value,
             };
@@ -26,7 +27,7 @@ class Input extends Component {
     }
 
     handleSubmit(){
-        this.props.parentSubmit(this.state.value);
+        this.props.parentSubmit(createCheckAnswer(this.state.value));
     }
 
     render(){
@@ -34,7 +35,7 @@ class Input extends Component {
         return(
             <FlexRow>
                 <input type="text" value={value} onChange={this.handleOnChange}/>
-                <BinButton onClick={this.handleSubmit} color={this.props.answer}>Check Answer</BinButton>
+                <BinButton onClick={this.handleSubmit} feedBack={this.props.answer}>Check Answer</BinButton>
             </FlexRow>
         );
     }
